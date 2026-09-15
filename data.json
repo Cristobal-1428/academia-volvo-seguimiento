@@ -92,10 +92,14 @@
       "id": 5,
       "nombre": "Fase 5: Integración Final y Pruebas",
       "descripcion": "Integrar los resultados finales con la página de certificados de Volvo y realizar las pruebas correspondientes.",
-      "responsable": "Por definir",
-      "fechaReunion": "",
+      "responsable": "Cristóbal Peña, Matias Galaz, Diego Oliva",
+      "fechaReunion": "28/09/2026, 29/09/2026 ",
       "estado": "Pendiente",
-      "flujo": [],
+      "flujo": [
+        "Lluvia de ideas para resolver los hallazgos de las pruebas",
+        "Actualización del avance al equipo",
+        "Ajustes según la retroalimentación antes del cierre"
+      ],
       "logros": [
         "Revisión inicial de los requisitos de integración con la página de certificados",
         "Primeros lineamientos del plan de pruebas definidos"
@@ -112,7 +116,11 @@
       "responsable": "Por definir",
       "fechaReunion": "",
       "estado": "Pendiente",
-      "flujo": [],
+      "flujo": [
+        "Lluvia de ideas para levantar mejoras",
+        "Actualización del avance al equipo",
+        "Revisión periódica de indicadores"
+      ],
       "logros": [],
       "pendientes": [
         "Definir indicadores para medir el funcionamiento del proceso",
