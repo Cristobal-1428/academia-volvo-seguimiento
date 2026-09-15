@@ -13,7 +13,7 @@
       "flujoPdf": "flujos/fase-1-as-is.pdf",
       "logros": [
         "Levantamiento de necesidades de capacitación completado",
-        "Malla curricular preliminar aprobada por stakeholders"
+        "Orden del flujo para poder empezar a generar el TO-BE"
       ],
       "pendientes": [
         ""
@@ -21,7 +21,25 @@
     },
     {
       "id": 2,
-      "nombre": "Fase 2: Diseño del To-Be del Proceso",
+      "nombre": "Fase 2: Resolver Dudas e Inquietudes",
+      "descripcion": "Aclarar los puntos pendientes sobre el nuevo flujo y resolver las aristas que todavía faltan por definir, antes de construir el flujo definitivo.",
+      "responsable": "Por definir",
+      "fechaReunion": "",
+      "estado": "En curso",
+      "flujo": [],
+      "logros": [
+        "Primera reunión de levantamiento de dudas realizada",
+        "Identificación inicial de los puntos por aclarar antes del flujo definitivo"
+      ],
+      "pendientes": [
+        "Definir cómo se realizará la creación de usuarios",
+        "Evaluar la opción de inyección de datos para la página de certificados",
+        "Aclarar el modelo de negocio de las capacitaciones"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Fase 3: Diseño del To-Be del Proceso",
       "descripcion": "Diseñar el to-be del proceso: ordenar y separar las etapas de trabajo, revisar opciones y definir cómo llevarlas a cabo.",
       "responsable": "Por definir",
       "fechaReunion": "",
@@ -37,8 +55,8 @@
       ]
     },
     {
-      "id": 3,
-      "nombre": "Fase 3: Piloto con Grupo Reducido",
+      "id": 4,
+      "nombre": "Fase 4: Piloto con Grupo Reducido",
       "descripcion": "",
       "responsable": "Por definir",
       "fechaReunion": "2026-05-20",
@@ -51,8 +69,8 @@
       ]
     },
     {
-      "id": 4,
-      "nombre": "Fase 4: Lanzamiento General",
+      "id": 5,
+      "nombre": "Fase 5: Lanzamiento General",
       "descripcion": "",
       "responsable": "Por definir",
       "fechaReunion": "2026-07-01",
@@ -65,8 +83,8 @@
       ]
     },
     {
-      "id": 5,
-      "nombre": "Fase 5: Seguimiento y Mejora Continua",
+      "id": 6,
+      "nombre": "Fase 6: Seguimiento y Mejora Continua",
       "descripcion": "",
       "responsable": "Por definir",
       "fechaReunion": "2026-09-15",
