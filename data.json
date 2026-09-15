@@ -21,19 +21,14 @@
     },
     {
       "id": 2,
-      "nombre": "Fase 2: Desarrollo de Contenidos",
-      "descripcion": "",
+      "nombre": "Fase 2: Diseño del To-Be del Proceso",
+      "descripcion": "Diseñar el to-be del proceso: ordenar y separar las etapas de trabajo, revisar opciones y definir cómo llevarlas a cabo.",
       "responsable": "Por definir",
-      "fechaReunion": "2026-03-10",
-      "estado": "En curso",
+      "fechaReunion": "",
+      "estado": "Pendiente",
       "flujo": [],
-      "logros": [
-        "Módulos 1 y 2 desarrollados y validados"
-      ],
-      "pendientes": [
-        "Terminar módulos 3 y 4",
-        "Grabar material audiovisual de apoyo"
-      ]
+      "logros": [],
+      "pendientes": []
     },
     {
       "id": 3,
