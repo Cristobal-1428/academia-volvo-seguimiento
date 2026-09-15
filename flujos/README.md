@@ -13,6 +13,12 @@ Luego, en `data.json`, referencia el archivo en la fase correspondiente:
 }
 ```
 
+Importante: la ruta debe ser **relativa a la carpeta del proyecto** (el
+archivo tiene que estar copiado dentro de `flujos/`). Una ruta absoluta de
+tu computador (por ejemplo `C:\Users\...\Downloads\archivo.pdf`) no
+funciona: el navegador no puede acceder a archivos fuera de la carpeta
+del sitio, ni en local ni menos en GitHub Pages.
+
 o, si es una imagen (PNG/JPG/SVG) en vez de un PDF:
 
 ```json

@@ -6,16 +6,17 @@
       "id": 1,
       "nombre": "Fase 1: Levantamiento As-Is de la Academia",
       "descripcion": "Construir el as-is de la Academia: identificar los procesos actuales y diagnosticar el estado en que se encuentra hoy.",
-      "responsable": "Por definir",
-      "fechaReunion": "",
+      "responsable": "Cristóbal Peña",
+      "fechaReunion": "Reunion Realizada",
       "estado": "Completado",
       "flujo": [],
+      "flujoPdf": "flujos/fase-1-as-is.pdf",
       "logros": [
         "Levantamiento de necesidades de capacitación completado",
         "Malla curricular preliminar aprobada por stakeholders"
       ],
       "pendientes": [
-        "Cerrar convenio con proveedor de contenidos"
+        ""
       ]
     },
     {
