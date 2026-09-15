@@ -90,16 +90,19 @@
     },
     {
       "id": 5,
-      "nombre": "Fase 5: Lanzamiento General",
-      "descripcion": "",
+      "nombre": "Fase 5: Integración Final y Pruebas",
+      "descripcion": "Integrar los resultados finales con la página de certificados de Volvo y realizar las pruebas correspondientes.",
       "responsable": "Por definir",
-      "fechaReunion": "2026-07-01",
-      "estado": "Retrasado",
+      "fechaReunion": "",
+      "estado": "Pendiente",
       "flujo": [],
-      "logros": [],
+      "logros": [
+        "Revisión inicial de los requisitos de integración con la página de certificados",
+        "Primeros lineamientos del plan de pruebas definidos"
+      ],
       "pendientes": [
-        "Reprogramar fecha de lanzamiento",
-        "Comunicar cambios a las áreas involucradas"
+        "Integrar los resultados finales con la página de certificados de Volvo",
+        "Definir y ejecutar el plan de pruebas"
       ]
     },
     {
