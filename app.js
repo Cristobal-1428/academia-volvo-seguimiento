@@ -1,4 +1,5 @@
 const ESTADOS_ORDEN = ["Retrasado", "En curso", "Pendiente", "Completado"];
+const ESTADOS_KANBAN = ["Pendiente", "En curso", "Retrasado", "Completado"];
 
 let FASES = [];
 
@@ -48,34 +49,61 @@ function crearTarjetaNav(fase) {
   card.href = `#fase-${fase.id}`;
   card.dataset.estado = fase.estado;
 
-  const main = document.createElement("span");
-  main.className = "phase-nav-main";
-
   const h2 = document.createElement("h2");
   h2.textContent = fase.nombre;
-  main.appendChild(h2);
-
-  const badge = document.createElement("span");
-  badge.className = "badge";
-  badge.dataset.estado = fase.estado;
-  badge.textContent = fase.estado;
-  main.appendChild(badge);
+  card.appendChild(h2);
 
   const arrow = document.createElement("span");
   arrow.className = "nav-arrow";
   arrow.setAttribute("aria-hidden", "true");
   arrow.textContent = "→";
 
-  card.appendChild(main);
   card.appendChild(arrow);
 
   return card;
 }
 
+function crearColumnaKanban(estado) {
+  const column = document.createElement("div");
+  column.className = "kanban-column";
+  column.dataset.estado = estado;
+
+  const header = document.createElement("div");
+  header.className = "kanban-column-header";
+
+  const title = document.createElement("h2");
+  title.textContent = estado;
+  header.appendChild(title);
+
+  const fasesEstado = FASES.filter((f) => f.estado === estado);
+
+  const count = document.createElement("span");
+  count.className = "kanban-count";
+  count.textContent = fasesEstado.length;
+  header.appendChild(count);
+
+  column.appendChild(header);
+
+  const list = document.createElement("div");
+  list.className = "kanban-list";
+
+  if (fasesEstado.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "kanban-empty";
+    empty.textContent = "Sin fases";
+    list.appendChild(empty);
+  } else {
+    fasesEstado.forEach((fase) => list.appendChild(crearTarjetaNav(fase)));
+  }
+
+  column.appendChild(list);
+  return column;
+}
+
 function renderBoard() {
   const board = document.getElementById("board");
   board.innerHTML = "";
-  FASES.forEach((fase) => board.appendChild(crearTarjetaNav(fase)));
+  ESTADOS_KANBAN.forEach((estado) => board.appendChild(crearColumnaKanban(estado)));
 }
 
 /* Vista: detalle de una fase (texto a la izquierda, flujo grande a la derecha) */
