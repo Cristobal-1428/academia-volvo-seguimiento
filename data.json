@@ -108,15 +108,16 @@
     {
       "id": 6,
       "nombre": "Fase 6: Seguimiento y Mejora Continua",
-      "descripcion": "",
+      "descripcion": "Monitorear el proceso una vez en funcionamiento, medir sus resultados y levantar mejoras continuas a partir de la retroalimentación de administradores de flota, conductores e instructor.",
       "responsable": "Por definir",
-      "fechaReunion": "2026-09-15",
+      "fechaReunion": "",
       "estado": "Pendiente",
       "flujo": [],
       "logros": [],
       "pendientes": [
-        "Diseñar encuestas de satisfacción",
-        "Definir ciclo de actualización de contenidos"
+        "Definir indicadores para medir el funcionamiento del proceso",
+        "Diseñar encuestas de satisfacción para administradores de flota y conductores",
+        "Establecer un ciclo de mejora continua junto al instructor y las áreas involucradas"
       ]
     }
   ]
