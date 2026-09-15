@@ -25,10 +25,16 @@
       "descripcion": "Diseñar el to-be del proceso: ordenar y separar las etapas de trabajo, revisar opciones y definir cómo llevarlas a cabo.",
       "responsable": "Por definir",
       "fechaReunion": "",
-      "estado": "Pendiente",
+      "estado": "En curso",
       "flujo": [],
-      "logros": [],
-      "pendientes": []
+      "logros": [
+        "Primer borrador del to-be con las etapas de trabajo ordenadas y separadas",
+        "Revisión inicial de opciones para llevar a cabo el proceso"
+      ],
+      "pendientes": [
+        "Terminar el to-be junto con el instructor",
+        "Obtener el visto bueno del instructor sobre el to-be"
+      ]
     },
     {
       "id": 3,
