@@ -80,6 +80,53 @@ function renderBoard() {
 
 /* Vista: detalle de una fase (texto a la izquierda, flujo grande a la derecha) */
 
+function crearContenidoFlujo(fase) {
+  if (fase.flujoPdf) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "flujo-pdf-wrapper";
+
+    const iframe = document.createElement("iframe");
+    iframe.className = "flujo-pdf";
+    iframe.src = fase.flujoPdf;
+    iframe.title = `Flujo encontrado — ${fase.nombre}`;
+    wrapper.appendChild(iframe);
+
+    const link = document.createElement("a");
+    link.className = "flujo-pdf-link";
+    link.href = fase.flujoPdf;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.textContent = "Abrir PDF en una pestaña nueva ↗";
+    wrapper.appendChild(link);
+
+    return wrapper;
+  }
+
+  if (fase.flujoImagen) {
+    const img = document.createElement("img");
+    img.className = "flujo-image";
+    img.src = fase.flujoImagen;
+    img.alt = `Flujo encontrado — ${fase.nombre}`;
+    return img;
+  }
+
+  const flujoList = document.createElement("ol");
+  flujoList.className = "flujo-list";
+  if (!fase.flujo || fase.flujo.length === 0) {
+    const li = document.createElement("li");
+    li.className = "empty";
+    li.textContent = "Sin registros";
+    flujoList.appendChild(li);
+  } else {
+    fase.flujo.forEach((paso) => {
+      const li = document.createElement("li");
+      li.textContent = paso;
+      flujoList.appendChild(li);
+    });
+  }
+  return flujoList;
+}
+
 function crearVistaDetalle(fase) {
   const wrap = document.createElement("div");
 
@@ -138,21 +185,7 @@ function crearVistaDetalle(fase) {
   flujoTitle.textContent = "Flujo encontrado";
   right.appendChild(flujoTitle);
 
-  const flujoList = document.createElement("ol");
-  flujoList.className = "flujo-list";
-  if (!fase.flujo || fase.flujo.length === 0) {
-    const li = document.createElement("li");
-    li.className = "empty";
-    li.textContent = "Sin registros";
-    flujoList.appendChild(li);
-  } else {
-    fase.flujo.forEach((paso) => {
-      const li = document.createElement("li");
-      li.textContent = paso;
-      flujoList.appendChild(li);
-    });
-  }
-  right.appendChild(flujoList);
+  right.appendChild(crearContenidoFlujo(fase));
 
   grid.appendChild(left);
   grid.appendChild(right);
