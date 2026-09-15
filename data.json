@@ -41,10 +41,11 @@
       "id": 3,
       "nombre": "Fase 3: Diseño del To-Be del Proceso",
       "descripcion": "Diseñar el to-be del proceso: ordenar y separar las etapas de trabajo, revisar opciones y definir cómo llevarlas a cabo.",
-      "responsable": "Por definir",
-      "fechaReunion": "",
+      "responsable": "Cristóbal Peña, Abraham Medina",
+      "fechaReunion": "17/09/2026",
       "estado": "En curso",
       "flujo": [],
+      "flujoPdf": "flujos/fase-3-to-be.pdf",
       "logros": [
         "Primer borrador del to-be con las etapas de trabajo ordenadas y separadas",
         "Revisión inicial de opciones para llevar a cabo el proceso"
