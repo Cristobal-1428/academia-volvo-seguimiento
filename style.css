@@ -376,6 +376,12 @@ a {
 .flujo-pdf-link {
   align-self: flex-start;
   font-size: 13px;
+  color: var(--text-on-dark);
+  text-decoration: underline;
+}
+
+.flujo-pdf-link:hover {
+  color: var(--text-on-dark-secondary);
 }
 
 .flujo-image {
