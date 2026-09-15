@@ -1,5 +1,7 @@
 const ESTADOS_ORDEN = ["Retrasado", "En curso", "Pendiente", "Completado"];
 
+let FASES = [];
+
 function formatearFecha(fechaISO) {
   if (!fechaISO) return "Sin definir";
   const fecha = new Date(fechaISO + "T00:00:00");
@@ -11,11 +13,11 @@ function formatearFecha(fechaISO) {
   });
 }
 
-function crearLista(items) {
+function crearLista(items, claseVacio = "empty") {
   const ul = document.createElement("ul");
   if (!items || items.length === 0) {
     const li = document.createElement("li");
-    li.className = "empty";
+    li.className = claseVacio;
     li.textContent = "Sin registros";
     ul.appendChild(li);
     return ul;
@@ -38,52 +40,86 @@ function crearSeccion(titulo, items) {
   return section;
 }
 
-function crearTarjetaFase(fase) {
-  const card = document.createElement("article");
-  card.className = "phase-card";
+/* Vista: tablero (tarjetas compactas, navegables) */
+
+function crearTarjetaNav(fase) {
+  const card = document.createElement("a");
+  card.className = "phase-nav-card";
+  card.href = `#fase-${fase.id}`;
   card.dataset.estado = fase.estado;
 
-  const bodyId = `phase-body-${fase.id}`;
-
-  const toggle = document.createElement("button");
-  toggle.type = "button";
-  toggle.className = "phase-toggle";
-  toggle.setAttribute("aria-expanded", "false");
-  toggle.setAttribute("aria-controls", bodyId);
-
-  const toggleMain = document.createElement("span");
-  toggleMain.className = "phase-toggle-main";
+  const main = document.createElement("span");
+  main.className = "phase-nav-main";
 
   const h2 = document.createElement("h2");
   h2.textContent = fase.nombre;
-  toggleMain.appendChild(h2);
+  main.appendChild(h2);
 
   const badge = document.createElement("span");
   badge.className = "badge";
   badge.dataset.estado = fase.estado;
   badge.textContent = fase.estado;
-  toggleMain.appendChild(badge);
+  main.appendChild(badge);
 
-  const chevron = document.createElement("span");
-  chevron.className = "chevron";
-  chevron.setAttribute("aria-hidden", "true");
-  chevron.textContent = "⌄";
+  const arrow = document.createElement("span");
+  arrow.className = "nav-arrow";
+  arrow.setAttribute("aria-hidden", "true");
+  arrow.textContent = "→";
 
-  toggle.appendChild(toggleMain);
-  toggle.appendChild(chevron);
-  card.appendChild(toggle);
+  card.appendChild(main);
+  card.appendChild(arrow);
 
-  const body = document.createElement("div");
-  body.className = "phase-body";
-  body.id = bodyId;
-  body.hidden = true;
+  return card;
+}
+
+function renderBoard() {
+  const board = document.getElementById("board");
+  board.innerHTML = "";
+  FASES.forEach((fase) => board.appendChild(crearTarjetaNav(fase)));
+}
+
+/* Vista: detalle de una fase (texto a la izquierda, flujo grande a la derecha) */
+
+function crearVistaDetalle(fase) {
+  const wrap = document.createElement("div");
+
+  const header = document.createElement("div");
+  header.className = "detail-header";
+
+  const back = document.createElement("a");
+  back.className = "back-link";
+  back.href = "#";
+  back.textContent = "← Volver al tablero";
+  header.appendChild(back);
+  wrap.appendChild(header);
+
+  const titleRow = document.createElement("div");
+  titleRow.className = "detail-title-row";
+
+  const h2 = document.createElement("h2");
+  h2.textContent = fase.nombre;
+  titleRow.appendChild(h2);
+
+  const badge = document.createElement("span");
+  badge.className = "badge";
+  badge.dataset.estado = fase.estado;
+  badge.textContent = fase.estado;
+  titleRow.appendChild(badge);
+
+  wrap.appendChild(titleRow);
 
   if (fase.descripcion) {
     const desc = document.createElement("p");
     desc.className = "phase-desc";
     desc.textContent = fase.descripcion;
-    body.appendChild(desc);
+    wrap.appendChild(desc);
   }
+
+  const grid = document.createElement("div");
+  grid.className = "detail-grid";
+
+  const left = document.createElement("div");
+  left.className = "detail-left";
 
   const meta = document.createElement("div");
   meta.className = "phase-meta";
@@ -91,22 +127,70 @@ function crearTarjetaFase(fase) {
     <span><strong>Responsable:</strong> ${fase.responsable || "Por definir"}</span>
     <span><strong>Fecha reunión:</strong> ${formatearFecha(fase.fechaReunion)}</span>
   `;
-  body.appendChild(meta);
+  left.appendChild(meta);
+  left.appendChild(crearSeccion("Logros", fase.logros));
+  left.appendChild(crearSeccion("Pendientes", fase.pendientes));
 
-  body.appendChild(crearSeccion("Flujo encontrado", fase.flujo));
-  body.appendChild(crearSeccion("Logros", fase.logros));
-  body.appendChild(crearSeccion("Pendientes", fase.pendientes));
+  const right = document.createElement("div");
+  right.className = "detail-right";
 
-  card.appendChild(body);
+  const flujoTitle = document.createElement("h3");
+  flujoTitle.textContent = "Flujo encontrado";
+  right.appendChild(flujoTitle);
 
-  toggle.addEventListener("click", () => {
-    const abrir = body.hidden;
-    body.hidden = !abrir;
-    toggle.setAttribute("aria-expanded", String(abrir));
-    card.classList.toggle("is-open", abrir);
-  });
+  const flujoList = document.createElement("ol");
+  flujoList.className = "flujo-list";
+  if (!fase.flujo || fase.flujo.length === 0) {
+    const li = document.createElement("li");
+    li.className = "empty";
+    li.textContent = "Sin registros";
+    flujoList.appendChild(li);
+  } else {
+    fase.flujo.forEach((paso) => {
+      const li = document.createElement("li");
+      li.textContent = paso;
+      flujoList.appendChild(li);
+    });
+  }
+  right.appendChild(flujoList);
 
-  return card;
+  grid.appendChild(left);
+  grid.appendChild(right);
+  wrap.appendChild(grid);
+
+  return wrap;
+}
+
+function renderDetalle(id) {
+  const fase = FASES.find((f) => String(f.id) === String(id));
+  const detail = document.getElementById("detail");
+  detail.innerHTML = "";
+  if (!fase) {
+    router();
+    return;
+  }
+  detail.appendChild(crearVistaDetalle(fase));
+}
+
+/* Router simple basado en el hash de la URL */
+
+function router() {
+  const board = document.getElementById("board");
+  const detail = document.getElementById("detail");
+  const legend = document.getElementById("legend");
+  const hash = window.location.hash;
+  const match = hash.match(/^#fase-(.+)$/);
+
+  if (match) {
+    board.hidden = true;
+    legend.hidden = true;
+    detail.hidden = false;
+    renderDetalle(match[1]);
+  } else {
+    board.hidden = false;
+    legend.hidden = false;
+    detail.hidden = true;
+  }
 }
 
 function renderLegend() {
@@ -148,20 +232,21 @@ async function cargarTablero() {
       updatedEl.textContent = `Actualizado: ${formatearFecha(datos.actualizado)}`;
     }
 
-    board.innerHTML = "";
-    (datos.fases || []).forEach((fase) => {
-      board.appendChild(crearTarjetaFase(fase));
-    });
+    FASES = datos.fases || [];
+    renderBoard();
+    router();
   } catch (error) {
     board.innerHTML = "";
     const errorMsg = document.createElement("p");
     errorMsg.style.color = "#ffffff";
     errorMsg.textContent =
-      "No se pudo cargar data.json. Si estás abriendo el archivo directamente desde el disco, sírvelo con un servidor local (por ejemplo: npx serve).";
+      "No se pudo cargar data.json. Si estás abriendo el archivo directamente desde el disco, sírvelo con un servidor local (por ejemplo: python seguimiento.py).";
     board.appendChild(errorMsg);
     console.error(error);
   }
 }
+
+window.addEventListener("hashchange", router);
 
 renderLegend();
 cargarTablero();
