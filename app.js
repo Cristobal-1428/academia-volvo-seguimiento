@@ -80,7 +80,39 @@ function renderBoard() {
 
 /* Vista: detalle de una fase (texto a la izquierda, flujo grande a la derecha) */
 
+function crearGridComponentes(componentes) {
+  const grid = document.createElement("div");
+  grid.className = "componentes-grid";
+  componentes.forEach((comp) => {
+    const card = document.createElement("div");
+    card.className = "componente-card";
+
+    const titulo = document.createElement("h4");
+    titulo.textContent = comp.titulo;
+    card.appendChild(titulo);
+
+    if (comp.descripcion) {
+      const desc = document.createElement("p");
+      desc.textContent = comp.descripcion;
+      card.appendChild(desc);
+    }
+
+    grid.appendChild(card);
+  });
+  return grid;
+}
+
+function tituloPanelDerecho(fase) {
+  return fase.componentes && fase.componentes.length > 0
+    ? "Frentes de trabajo"
+    : "Flujo encontrado";
+}
+
 function crearContenidoFlujo(fase) {
+  if (fase.componentes && fase.componentes.length > 0) {
+    return crearGridComponentes(fase.componentes);
+  }
+
   if (fase.flujoPdf) {
     const wrapper = document.createElement("div");
     wrapper.className = "flujo-pdf-wrapper";
@@ -182,7 +214,7 @@ function crearVistaDetalle(fase) {
   right.className = "detail-right";
 
   const flujoTitle = document.createElement("h3");
-  flujoTitle.textContent = "Flujo encontrado";
+  flujoTitle.textContent = tituloPanelDerecho(fase);
   right.appendChild(flujoTitle);
 
   right.appendChild(crearContenidoFlujo(fase));

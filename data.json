@@ -63,7 +63,25 @@
       "fechaReunion": "21 y 22 de septiembre de 2026",
       "estado": "En curso",
       "flujo": [],
-      "logros": [],
+      "componentes": [
+        {
+          "titulo": "Formulario de Flota",
+          "descripcion": "Para que el administrador de flota complete los datos de los conductores."
+        },
+        {
+          "titulo": "Mesa de Ayuda",
+          "descripcion": "Canal de soporte para resolver dudas durante el proceso."
+        },
+        {
+          "titulo": "Validación Volvo/VolvoConnect",
+          "descripcion": "Confirma el vínculo del cliente con Volvo o VolvoConnect vía RUT de la razón social y un chasis."
+        }
+      ],
+      "logros": [
+        "Primer borrador del formulario para el administrador de flota",
+        "Mesa de ayuda habilitada para consultas iniciales",
+        "Primera propuesta de validación Volvo/VolvoConnect vía RUT y chasis"
+      ],
       "pendientes": [
         "Terminar el formulario para el administrador de flota",
         "Habilitar la mesa de ayuda",
