@@ -1,0 +1,293 @@
+/* ==========================================================================
+   Academia Volvo — Tablero de seguimiento
+   Identidad visual: fondo azul marino oscuro, greys neutros para estructura,
+   acentos de color puntuales solo en badges/detalles.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Volvo Novum";
+  src: url("fonts/VolvoNovum-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Volvo Novum";
+  src: url("fonts/VolvoNovum-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Volvo Novum";
+  src: url("fonts/VolvoNovum-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Volvo Broad Spread";
+  src: url("fonts/VolvoBroadSpread-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Fondo y estructura (greys / dark blue) */
+  --navy-900: #1b2a4a;
+  --navy-800: #22335a;
+  --navy-700: #2c3f68;
+  --navy-600: #3a4f7a;
+  --grey-100: #f5f6f7;
+  --grey-300: #c7ccd4;
+  --white: #ffffff;
+  --text-on-dark: #ffffff;
+  --text-on-dark-secondary: rgba(255, 255, 255, 0.78);
+  --text-on-light: #1b2a4a;
+  --text-on-light-secondary: rgba(27, 42, 74, 0.7);
+
+  /* Acentos (uso puntual: badges y detalles, nunca dominando el layout) */
+  --accent-blue: #2f5d8a;
+  --accent-green: #3f6d53;
+  --accent-terracotta: #e4c9a8;
+  --accent-red: #8b3a2b;
+
+  --radius: 12px;
+  --max-width: 1200px;
+
+  --font-body: "Volvo Novum", "Inter", Helvetica, Arial, sans-serif;
+  --font-display: "Volvo Broad Spread", "Inter", Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--navy-900);
+  color: var(--text-on-dark);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-blue);
+}
+
+.wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+/* Header */
+
+.site-header {
+  margin-bottom: 48px;
+}
+
+.site-header .eyebrow {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-on-dark-secondary);
+  margin-bottom: 12px;
+}
+
+.site-header h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.1;
+  margin: 0 0 16px;
+  color: var(--text-on-dark);
+}
+
+.site-header p.subtitle {
+  font-size: 17px;
+  color: var(--text-on-dark-secondary);
+  margin: 0 0 24px;
+  max-width: 640px;
+}
+
+.updated-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-on-dark-secondary);
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+/* Legend */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-on-dark-secondary);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Board grid */
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.phase-card {
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-left: 4px solid var(--navy-600);
+}
+
+.phase-card[data-estado="Completado"] {
+  border-left-color: var(--accent-green);
+}
+.phase-card[data-estado="En curso"] {
+  border-left-color: var(--accent-blue);
+}
+.phase-card[data-estado="Pendiente"] {
+  border-left-color: var(--accent-terracotta);
+}
+.phase-card[data-estado="Retrasado"] {
+  border-left-color: var(--accent-red);
+}
+
+.phase-card h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--text-on-dark);
+}
+
+.phase-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 14px;
+  color: var(--text-on-dark-secondary);
+}
+
+.phase-meta strong {
+  color: var(--text-on-dark);
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+.badge[data-estado="Completado"] {
+  background: var(--accent-green);
+  color: var(--white);
+}
+.badge[data-estado="En curso"] {
+  background: var(--accent-blue);
+  color: var(--white);
+}
+.badge[data-estado="Pendiente"] {
+  background: var(--accent-terracotta);
+  color: var(--text-on-light);
+}
+.badge[data-estado="Retrasado"] {
+  background: var(--accent-red);
+  color: var(--white);
+}
+
+.phase-section {
+  font-size: 14px;
+}
+
+.phase-section h3 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-on-dark-secondary);
+  margin: 0 0 8px;
+}
+
+.phase-section ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-on-dark);
+}
+
+.phase-section ul li {
+  margin-bottom: 4px;
+}
+
+.phase-section .empty {
+  color: var(--text-on-dark-secondary);
+  font-style: italic;
+}
+
+/* Footer */
+
+.site-footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--navy-700);
+  font-size: 13px;
+  color: var(--text-on-dark-secondary);
+}
+
+/* Responsive */
+
+@media (max-width: 640px) {
+  .wrapper {
+    padding: 40px 20px 56px;
+  }
+  .phase-card {
+    padding: 22px;
+  }
+}

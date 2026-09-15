@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academia Volvo — Seguimiento del Proyecto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="site-header">
+        <span class="eyebrow">Volvo Group</span>
+        <h1>Academia Volvo</h1>
+        <p class="subtitle">
+          Tablero de seguimiento del proyecto: fases, responsables, fechas de
+          reunión y estado de avance.
+        </p>
+        <span class="updated-badge" id="updated-date">Actualizado: —</span>
+      </header>
+
+      <div class="legend" id="legend"></div>
+
+      <main class="board-grid" id="board"></main>
+
+      <footer class="site-footer">
+        Datos cargados desde <code>data.json</code>. Para actualizar el
+        tablero, edita ese archivo — no es necesario modificar este HTML.
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

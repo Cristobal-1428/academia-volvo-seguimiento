@@ -1,0 +1,70 @@
+{
+  "proyecto": "Academia Volvo",
+  "actualizado": "2026-09-15",
+  "fases": [
+    {
+      "id": 1,
+      "nombre": "Fase 1: Diagnóstico y Diseño Curricular",
+      "responsable": "Por definir",
+      "fechaReunion": "2026-01-15",
+      "estado": "Completado",
+      "logros": [
+        "Levantamiento de necesidades de capacitación completado",
+        "Malla curricular preliminar aprobada por stakeholders"
+      ],
+      "pendientes": [
+        "Cerrar convenio con proveedor de contenidos"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Fase 2: Desarrollo de Contenidos",
+      "responsable": "Por definir",
+      "fechaReunion": "2026-03-10",
+      "estado": "En curso",
+      "logros": [
+        "Módulos 1 y 2 desarrollados y validados"
+      ],
+      "pendientes": [
+        "Terminar módulos 3 y 4",
+        "Grabar material audiovisual de apoyo"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Fase 3: Piloto con Grupo Reducido",
+      "responsable": "Por definir",
+      "fechaReunion": "2026-05-20",
+      "estado": "Pendiente",
+      "logros": [],
+      "pendientes": [
+        "Seleccionar grupo piloto",
+        "Definir métricas de evaluación del piloto"
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Fase 4: Lanzamiento General",
+      "responsable": "Por definir",
+      "fechaReunion": "2026-07-01",
+      "estado": "Retrasado",
+      "logros": [],
+      "pendientes": [
+        "Reprogramar fecha de lanzamiento",
+        "Comunicar cambios a las áreas involucradas"
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Fase 5: Seguimiento y Mejora Continua",
+      "responsable": "Por definir",
+      "fechaReunion": "2026-09-15",
+      "estado": "Pendiente",
+      "logros": [],
+      "pendientes": [
+        "Diseñar encuestas de satisfacción",
+        "Definir ciclo de actualización de contenidos"
+      ]
+    }
+  ]
+}
