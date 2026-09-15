@@ -4,10 +4,12 @@
   "fases": [
     {
       "id": 1,
-      "nombre": "Fase 1: Diagnóstico y Diseño Curricular",
+      "nombre": "Fase 1: Levantamiento As-Is de la Academia",
+      "descripcion": "Construir el as-is de la Academia: identificar los procesos actuales y diagnosticar el estado en que se encuentra hoy.",
       "responsable": "Por definir",
-      "fechaReunion": "2026-01-15",
+      "fechaReunion": "",
       "estado": "Completado",
+      "flujo": [],
       "logros": [
         "Levantamiento de necesidades de capacitación completado",
         "Malla curricular preliminar aprobada por stakeholders"
@@ -19,9 +21,11 @@
     {
       "id": 2,
       "nombre": "Fase 2: Desarrollo de Contenidos",
+      "descripcion": "",
       "responsable": "Por definir",
       "fechaReunion": "2026-03-10",
       "estado": "En curso",
+      "flujo": [],
       "logros": [
         "Módulos 1 y 2 desarrollados y validados"
       ],
@@ -33,9 +37,11 @@
     {
       "id": 3,
       "nombre": "Fase 3: Piloto con Grupo Reducido",
+      "descripcion": "",
       "responsable": "Por definir",
       "fechaReunion": "2026-05-20",
       "estado": "Pendiente",
+      "flujo": [],
       "logros": [],
       "pendientes": [
         "Seleccionar grupo piloto",
@@ -45,9 +51,11 @@
     {
       "id": 4,
       "nombre": "Fase 4: Lanzamiento General",
+      "descripcion": "",
       "responsable": "Por definir",
       "fechaReunion": "2026-07-01",
       "estado": "Retrasado",
+      "flujo": [],
       "logros": [],
       "pendientes": [
         "Reprogramar fecha de lanzamiento",
@@ -57,9 +65,11 @@
     {
       "id": 5,
       "nombre": "Fase 5: Seguimiento y Mejora Continua",
+      "descripcion": "",
       "responsable": "Por definir",
       "fechaReunion": "2026-09-15",
       "estado": "Pendiente",
+      "flujo": [],
       "logros": [],
       "pendientes": [
         "Diseñar encuestas de satisfacción",

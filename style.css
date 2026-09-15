@@ -172,11 +172,64 @@ a {
   background: var(--navy-800);
   border: 1px solid var(--navy-700);
   border-radius: var(--radius);
-  padding: 28px;
+  border-left: 4px solid var(--navy-600);
+  overflow: hidden;
+}
+
+.phase-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  padding: 24px 28px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+}
+
+.phase-toggle:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.phase-toggle:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: -2px;
+}
+
+.phase-toggle-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.chevron {
+  flex-shrink: 0;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--text-on-dark-secondary);
+  transition: transform 0.2s ease;
+}
+
+.phase-card.is-open .chevron {
+  transform: rotate(180deg);
+}
+
+.phase-body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  border-left: 4px solid var(--navy-600);
+  padding: 0 28px 28px;
+}
+
+.phase-desc {
+  margin: -4px 0 0;
+  font-size: 14px;
+  color: var(--text-on-dark-secondary);
 }
 
 .phase-card[data-estado="Completado"] {
@@ -287,7 +340,10 @@ a {
   .wrapper {
     padding: 40px 20px 56px;
   }
-  .phase-card {
-    padding: 22px;
+  .phase-toggle {
+    padding: 20px 22px;
+  }
+  .phase-body {
+    padding: 0 22px 22px;
   }
 }

@@ -28,20 +28,62 @@ function crearLista(items) {
   return ul;
 }
 
+function crearSeccion(titulo, items) {
+  const section = document.createElement("div");
+  section.className = "phase-section";
+  const h3 = document.createElement("h3");
+  h3.textContent = titulo;
+  section.appendChild(h3);
+  section.appendChild(crearLista(items));
+  return section;
+}
+
 function crearTarjetaFase(fase) {
   const card = document.createElement("article");
   card.className = "phase-card";
   card.dataset.estado = fase.estado;
 
+  const bodyId = `phase-body-${fase.id}`;
+
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "phase-toggle";
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-controls", bodyId);
+
+  const toggleMain = document.createElement("span");
+  toggleMain.className = "phase-toggle-main";
+
   const h2 = document.createElement("h2");
   h2.textContent = fase.nombre;
-  card.appendChild(h2);
+  toggleMain.appendChild(h2);
 
   const badge = document.createElement("span");
   badge.className = "badge";
   badge.dataset.estado = fase.estado;
   badge.textContent = fase.estado;
-  card.appendChild(badge);
+  toggleMain.appendChild(badge);
+
+  const chevron = document.createElement("span");
+  chevron.className = "chevron";
+  chevron.setAttribute("aria-hidden", "true");
+  chevron.textContent = "⌄";
+
+  toggle.appendChild(toggleMain);
+  toggle.appendChild(chevron);
+  card.appendChild(toggle);
+
+  const body = document.createElement("div");
+  body.className = "phase-body";
+  body.id = bodyId;
+  body.hidden = true;
+
+  if (fase.descripcion) {
+    const desc = document.createElement("p");
+    desc.className = "phase-desc";
+    desc.textContent = fase.descripcion;
+    body.appendChild(desc);
+  }
 
   const meta = document.createElement("div");
   meta.className = "phase-meta";
@@ -49,23 +91,20 @@ function crearTarjetaFase(fase) {
     <span><strong>Responsable:</strong> ${fase.responsable || "Por definir"}</span>
     <span><strong>Fecha reunión:</strong> ${formatearFecha(fase.fechaReunion)}</span>
   `;
-  card.appendChild(meta);
+  body.appendChild(meta);
 
-  const logrosSection = document.createElement("div");
-  logrosSection.className = "phase-section";
-  const logrosTitle = document.createElement("h3");
-  logrosTitle.textContent = "Logros";
-  logrosSection.appendChild(logrosTitle);
-  logrosSection.appendChild(crearLista(fase.logros));
-  card.appendChild(logrosSection);
+  body.appendChild(crearSeccion("Flujo encontrado", fase.flujo));
+  body.appendChild(crearSeccion("Logros", fase.logros));
+  body.appendChild(crearSeccion("Pendientes", fase.pendientes));
 
-  const pendientesSection = document.createElement("div");
-  pendientesSection.className = "phase-section";
-  const pendientesTitle = document.createElement("h3");
-  pendientesTitle.textContent = "Pendientes";
-  pendientesSection.appendChild(pendientesTitle);
-  pendientesSection.appendChild(crearLista(fase.pendientes));
-  card.appendChild(pendientesSection);
+  card.appendChild(body);
+
+  toggle.addEventListener("click", () => {
+    const abrir = body.hidden;
+    body.hidden = !abrir;
+    toggle.setAttribute("aria-expanded", String(abrir));
+    card.classList.toggle("is-open", abrir);
+  });
 
   return card;
 }
