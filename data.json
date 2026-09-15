@@ -57,16 +57,17 @@
     },
     {
       "id": 4,
-      "nombre": "Fase 4: Piloto con Grupo Reducido",
-      "descripcion": "",
-      "responsable": "Por definir",
-      "fechaReunion": "2026-05-20",
-      "estado": "Pendiente",
+      "nombre": "Fase 4: Formularios de Flota y Validación de Clientes",
+      "descripcion": "Desarrollar el formulario que se enviará al administrador de flota para completar los datos de los conductores, habilitar la mesa de ayuda, y crear una validación que permita confirmar si el cliente tiene vínculo con Volvo o cuenta con VolvoConnect a través del RUT de la razón social y un chasis.",
+      "responsable": "Matías Galaz, Diego Oliva, Cristóbal Peña",
+      "fechaReunion": "21 y 22 de septiembre de 2026",
+      "estado": "En curso",
       "flujo": [],
       "logros": [],
       "pendientes": [
-        "Seleccionar grupo piloto",
-        "Definir métricas de evaluación del piloto"
+        "Terminar el formulario para el administrador de flota",
+        "Habilitar la mesa de ayuda",
+        "Desarrollar la validación de vínculo Volvo/VolvoConnect vía RUT y chasis"
       ]
     },
     {
