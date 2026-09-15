@@ -191,6 +191,8 @@ function router() {
     legend.hidden = false;
     detail.hidden = true;
   }
+
+  window.scrollTo(0, 0);
 }
 
 function renderLegend() {
